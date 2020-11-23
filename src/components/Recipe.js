@@ -6,25 +6,8 @@ export default function Recipe(props) {
   const { handleRecipeDelete, handleRecipeSelect } = useContext(RecipeContext);
   const { id, name, cookTime, servings, instructions, ingredients } = props;
 
-  return (
-    <div className="recipe">
-      <div className="recipe__header">
-        <h3 className="recipe__title">{name}</h3>
-        <div>
-          <button
-            className="btn btn--primary mr-1"
-            onClick={() => handleRecipeSelect(id)}
-          >
-            Edit
-          </button>
-          <button
-            className="btn btn--danger"
-            onClick={() => handleRecipeDelete(id)}
-          >
-            Delete
-          </button>
-        </div>
-      </div>
+  const recipeDetails = (
+    <div className="recipe__details">
       <div className="recipe__row">
         <span className="recipe__label">Cook Time:</span>
         <span className="recipe__value">{cookTime}</span>
@@ -45,6 +28,29 @@ export default function Recipe(props) {
           <IngredientList ingredients={ingredients} />
         </div>
       </div>
+    </div>
+  );
+
+  return (
+    <div className="recipe">
+      <div className="recipe__header">
+        <h3 className="recipe__title">{name}</h3>
+        <div>
+          <button
+            className="btn btn--primary mr-1"
+            onClick={() => handleRecipeSelect(id)}
+          >
+            Edit
+          </button>
+          <button
+            className="btn btn--danger"
+            onClick={() => handleRecipeDelete(id)}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      {recipeDetails}
     </div>
   );
 }

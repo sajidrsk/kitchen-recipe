@@ -10,7 +10,7 @@
   width: 100%;
   overflow-y: auto;
   z-index: 1;
-  background-color: rgba(150, 124, 125, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .recipe-edit__modal {
@@ -19,7 +19,8 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 25px rgba(0, 170, 255, 0.26);
   /* font-size: 50%; */
 }
 

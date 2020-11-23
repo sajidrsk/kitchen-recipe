@@ -1,12 +1,22 @@
 .recipe {
   padding: 20px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid black;
+  /* padding-bottom: 40px; */
+  margin: 20px;
+  /* border: 1px solid black; */
+  box-shadow: 0 2px 14px rgba(0, 170, 255, 0.26);
+  /* box-shadow: 0px 2px 8px rgba(0, 170, 255, 0.26), 0 -2px -8px #7b272c; */
 }
 
 .recipe:last-child {
-  border-bottom: none;
+  /* border-bottom: none; */
   padding-bottom: 10px;
+}
+
+.recipe__details {
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .recipe__header {
@@ -14,6 +24,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+}
+
+.recipe:hover .recipe__details {
+  opacity: 1;
+  height: auto;
 }
 
 .recipe__title {
