@@ -33,11 +33,11 @@ const RecipeEdit = ({ recipe }) => {
       id: Date.now().toString(),
       name: "",
     };
-    handleChange({ ingredients: [...recipe.ingredients, newIngredient] });
+    handleIngChange({ ingredients: [...recipe.ingredients, newIngredient] });
   };
 
   const handleIngredientDelete = (id) => {
-    handleChange({
+    handleIngChange({
       ingredients: recipe.ingredients.filter((i) => i.id !== id),
     });
   };
