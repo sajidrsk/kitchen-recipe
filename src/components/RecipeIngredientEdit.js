@@ -12,13 +12,13 @@ export default function RecipeIngredientEdit(props) {
         className="recipe-edit__input"
         type="text"
         onChange={(e) => handleChange({ name: e.target.value })}
-        value={ingredient.name}
+        // value={ingredient.name}
       />
       <input
         className="recipe-edit__input"
         type="text"
         onChange={(e) => handleChange({ amount: e.target.value })}
-        value={ingredient.amount}
+        // value={ingredient.amount}
       />
       <button
         className="btn btn--danger"
