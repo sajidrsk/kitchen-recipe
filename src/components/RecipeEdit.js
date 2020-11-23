@@ -10,6 +10,10 @@ const RecipeEdit = ({ recipe }) => {
     setTempChages({ ...tempChanges, ...changes });
     // handleRecipeChange(recipe.id, { ...recipe, ...changes });
   };
+  const handleIngChange = (changes) => {
+    // setTempChages({ ...tempChanges, ...changes });
+    handleRecipeChange(recipe.id, { ...recipe, ...changes });
+  };
 
   const handleSubmitButton = () => {
     handleRecipeChange(recipe.id, tempChanges);
@@ -20,7 +24,7 @@ const RecipeEdit = ({ recipe }) => {
     const newIngredients = [...recipe.ingredients];
     const index = newIngredients.findIndex((i) => i.id === id);
     newIngredients[index] = ingredient;
-    handleChange({ ingredients: newIngredients });
+    handleIngChange({ ingredients: newIngredients });
   };
 
   const handleIngredientAdd = () => {
