@@ -12,6 +12,7 @@ const RecipeEdit = ({ recipe }) => {
   };
   const handleIngChange = (changes) => {
     // setTempChages({ ...tempChanges, ...changes });
+
     handleRecipeChange(recipe.id, { ...recipe, ...changes });
   };
 
