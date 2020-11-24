@@ -1,4 +1,6 @@
 import React from "react";
+import { Button, TextField } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function RecipeIngredientEdit(props) {
   const { ingredient, handleIngredientChange, handleIngredientDelete } = props;
@@ -8,24 +10,31 @@ export default function RecipeIngredientEdit(props) {
   };
   return (
     <>
-      <input
+      <TextField
+        variant="outlined"
+        // label="Ingredient Name"
         className="recipe-edit__input"
         type="text"
         onChange={(e) => handleChange({ name: e.target.value })}
         value={ingredient.name}
       />
-      <input
+      <TextField
+        variant="outlined"
+        // label="Ingredient Quantity"
         className="recipe-edit__input"
         type="text"
         onChange={(e) => handleChange({ amount: e.target.value })}
         value={ingredient.amount}
       />
-      <button
+
+      <Button
+        variant="contained"
+        color="secondary"
         className="btn btn--danger"
         onClick={() => handleIngredientDelete(ingredient.id)}
       >
-        &times;
-      </button>
+        <DeleteIcon />
+      </Button>
     </>
   );
 }

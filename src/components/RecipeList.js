@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { Button } from "@material-ui/core";
+
 import Recipe from "./Recipe";
 import { RecipeContext } from "./App";
 
@@ -12,9 +14,14 @@ export default function RecipeList({ recipes }) {
         })}
       </div>
       <div className="recipe-list__add-recipe-btn-container">
-        <button className="btn btn--primary" onClick={handleRecipeAdd}>
+        <Button
+          color="primary"
+          variant="contained"
+          // className="btn btn--primary"
+          onClick={handleRecipeAdd}
+        >
           Add Recipe
-        </button>
+        </Button>
       </div>
     </div>
   );

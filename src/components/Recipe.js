@@ -1,8 +1,18 @@
 import React, { useContext } from "react";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
 import IngredientList from "./IngredientList";
 import { RecipeContext } from "./App";
 
-export default function Recipe(props) {
+const useStyles = makeStyles({
+  buttonMargin: {
+    margin: "5px",
+  },
+});
+
+function Recipe(props) {
+  const classes = useStyles();
   const { handleRecipeDelete, handleRecipeSelect } = useContext(RecipeContext);
   const { id, name, cookTime, servings, instructions, ingredients } = props;
 
@@ -36,21 +46,29 @@ export default function Recipe(props) {
       <div className="recipe__header">
         <h3 className="recipe__title">{name}</h3>
         <div>
-          <button
-            className="btn btn--primary mr-1"
+          <Button
+            className={classes.buttonMargin}
+            variant="contained"
+            color="primary"
+            // className="btn btn--primary mr-1"
             onClick={() => handleRecipeSelect(id)}
           >
             Edit
-          </button>
-          <button
-            className="btn btn--danger"
+          </Button>
+          <Button
+            // className="btn btn--danger"
+            className={classes.buttonMargin}
+            variant="contained"
+            color="secondary"
             onClick={() => handleRecipeDelete(id)}
           >
             Delete
-          </button>
+          </Button>
         </div>
       </div>
       {recipeDetails}
     </div>
   );
 }
+
+export default Recipe;

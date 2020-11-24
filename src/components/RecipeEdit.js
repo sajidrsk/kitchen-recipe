@@ -1,4 +1,7 @@
 import React, { useContext, useState } from "react";
+import { Button, TextField } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
+
 import RecipeIngredientEdit from "./RecipeIngredientEdit";
 import { RecipeContext } from "./App";
 
@@ -10,9 +13,9 @@ const RecipeEdit = ({ recipe }) => {
     setTempChages({ ...tempChanges, ...changes });
     // handleRecipeChange(recipe.id, { ...recipe, ...changes });
   };
+
   const handleIngChange = (changes) => {
     // setTempChages({ ...tempChanges, ...changes });
-
     handleRecipeChange(recipe.id, { ...recipe, ...changes });
   };
 
@@ -46,18 +49,23 @@ const RecipeEdit = ({ recipe }) => {
     <div className="recipe-edit">
       <div className="recipe-edit__modal">
         <div className="recipe-edit__remove-button-container">
-          <button
-            className="btn recipe-edit__remove-button"
+          <Button
+            variant="contained"
+            color="secondary"
+            // className="btn recipe-edit__remove-button"
             onClick={() => handleRecipeSelect(undefined)}
           >
-            &times;
-          </button>
+            <CloseIcon fontSize="small" />
+            {/* &times; */}
+          </Button>
         </div>
         <div className="recipe-edit__details-grid">
-          <label htmlFor="name" className="recipe-edit__label">
+          {/* <label htmlFor="name" className="recipe-edit__label">
             Name
-          </label>
-          <input
+          </label> */}
+          <TextField
+            variant="outlined"
+            label="Recipe Name"
             type="text"
             name="name"
             id="name"
@@ -65,10 +73,12 @@ const RecipeEdit = ({ recipe }) => {
             value={tempChanges.name}
             onChange={(e) => handleChange({ name: e.target.value })}
           />
-          <label htmlFor="cookTime" className="recipe-edit__label">
+          {/* <label htmlFor="cookTime" className="recipe-edit__label">
             Cook Time
-          </label>
-          <input
+          </label> */}
+          <TextField
+            variant="outlined"
+            label="CookTime"
             type="text"
             name="cookTime"
             id="cookTime"
@@ -76,10 +86,12 @@ const RecipeEdit = ({ recipe }) => {
             value={tempChanges.cookTime}
             onChange={(e) => handleChange({ cookTime: e.target.value })}
           />
-          <label htmlFor="servings" className="recipe-edit__label">
+          {/* <label htmlFor="servings" className="recipe-edit__label">
             Servings
-          </label>
-          <input
+          </label> */}
+          <TextField
+            variant="outlined"
+            label="Servings"
             type="text"
             name="servings"
             id="servings"
@@ -89,14 +101,18 @@ const RecipeEdit = ({ recipe }) => {
               handleChange({ servings: parseInt(e.target.value) || "" })
             }
           />
-          <label
+          {/* <label
             htmlFor="instructions"
             id="instructions"
             className="recipe-edit__label"
           >
             Instructions
-          </label>
-          <textarea
+          </label> */}
+          <TextField
+            variant="outlined"
+            label="Instructions"
+            multiline
+            rows={5}
             name="instructions"
             id="instructions"
             className="recipe-edit__input"
@@ -105,7 +121,7 @@ const RecipeEdit = ({ recipe }) => {
           />
         </div>
         <br />
-        <label className="recipe-edit__label">Ingredients</label>
+        {/* <label className="recipe-edit__label">Ingredients</label> */}
         <div className="recipe-edit__ingredient-grid">
           <div>Name</div>
           <div>Amount</div>
@@ -120,12 +136,22 @@ const RecipeEdit = ({ recipe }) => {
           ))}
         </div>
         <div className="recipe-edit__add-ingredient-btn-container">
-          <button className="btn btn--primary" onClick={handleIngredientAdd}>
+          <Button
+            variant="contained"
+            color="primary"
+            // className="btn btn--primary"
+            onClick={handleIngredientAdd}
+          >
             Add Ingredient
-          </button>
-          <button className="btn btn--primary" onClick={handleSubmitButton}>
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            // className="btn btn--primary"
+            onClick={handleSubmitButton}
+          >
             Make Changes
-          </button>
+          </Button>
         </div>
       </div>
     </div>
