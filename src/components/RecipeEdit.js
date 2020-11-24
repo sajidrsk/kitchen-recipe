@@ -50,6 +50,7 @@ const RecipeEdit = ({ recipe }) => {
       <div className="recipe-edit__modal" onClick={(e) => e.stopPropagation()}>
         <div className="recipe-edit__remove-button-container">
           <Button
+            size="small"
             variant="contained"
             color="secondary"
             // className="btn recipe-edit__remove-button"
@@ -137,6 +138,7 @@ const RecipeEdit = ({ recipe }) => {
         </div>
         <div className="recipe-edit__add-ingredient-btn-container">
           <Button
+            size="small"
             variant="contained"
             color="primary"
             // className="btn btn--primary"
@@ -145,6 +147,7 @@ const RecipeEdit = ({ recipe }) => {
             Add Ingredient
           </Button>
           <Button
+            size="small"
             variant="contained"
             color="primary"
             // className="btn btn--primary"

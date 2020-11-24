@@ -28,6 +28,7 @@ export default function RecipeIngredientEdit(props) {
       />
 
       <Button
+        size="small"
         variant="contained"
         color="secondary"
         className="btn btn--danger"

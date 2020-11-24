@@ -15,6 +15,7 @@ export default function RecipeList({ recipes }) {
       </div>
       <div className="recipe-list__add-recipe-btn-container">
         <Button
+          size="small"
           color="primary"
           variant="contained"
           // className="btn btn--primary"

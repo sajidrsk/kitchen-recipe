@@ -27,6 +27,7 @@ function Recipe(props) {
           <h3 className="recipe__title">{name}</h3>
           <div>
             <Button
+              size="small"
               className={classes.buttonMargin}
               variant="contained"
               color="primary"
@@ -37,6 +38,7 @@ function Recipe(props) {
             </Button>
             <Button
               // className="btn btn--danger"
+              size="small"
               className={classes.buttonMargin}
               variant="contained"
               color="secondary"
