@@ -18,7 +18,6 @@ export default function RecipeList({ recipes }) {
           size="small"
           color="primary"
           variant="contained"
-          // className="btn btn--primary"
           onClick={handleRecipeAdd}
         >
           Add Recipe

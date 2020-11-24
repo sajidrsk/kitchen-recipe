@@ -12,7 +12,6 @@ export default function RecipeIngredientEdit(props) {
     <>
       <TextField
         variant="outlined"
-        // label="Ingredient Name"
         className="recipe-edit__input"
         type="text"
         onChange={(e) => handleChange({ name: e.target.value })}
@@ -20,7 +19,6 @@ export default function RecipeIngredientEdit(props) {
       />
       <TextField
         variant="outlined"
-        // label="Ingredient Quantity"
         className="recipe-edit__input"
         type="text"
         onChange={(e) => handleChange({ amount: e.target.value })}

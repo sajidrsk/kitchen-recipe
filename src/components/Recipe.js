@@ -31,13 +31,11 @@ function Recipe(props) {
               className={classes.buttonMargin}
               variant="contained"
               color="primary"
-              // className="btn btn--primary mr-1"
               onClick={() => handleRecipeSelect(id)}
             >
               Edit
             </Button>
             <Button
-              // className="btn btn--danger"
               size="small"
               className={classes.buttonMargin}
               variant="contained"
