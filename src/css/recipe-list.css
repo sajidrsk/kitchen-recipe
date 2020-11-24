@@ -5,6 +5,12 @@
   margin: 10px auto;
 }
 
+.recipe-list__grid {
+  /* background-color: red; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(3); */
+}
 .recipe-list__add-recipe-btn-container {
   padding-top: 30px;
   padding-bottom: 30px;

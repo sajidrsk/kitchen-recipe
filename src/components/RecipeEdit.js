@@ -46,8 +46,8 @@ const RecipeEdit = ({ recipe }) => {
   };
 
   return (
-    <div className="recipe-edit">
-      <div className="recipe-edit__modal">
+    <div className="recipe-edit" onClick={() => handleRecipeSelect(undefined)}>
+      <div className="recipe-edit__modal" onClick={(e) => e.stopPropagation()}>
         <div className="recipe-edit__remove-button-container">
           <Button
             variant="contained"

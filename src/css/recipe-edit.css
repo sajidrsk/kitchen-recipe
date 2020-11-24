@@ -4,13 +4,13 @@
   position: fixed;
   left: 0;
   top: 0;
-  /* margin: 0 auto; */
-  /* width: 50%; */
   height: 100%;
   width: 100%;
   overflow-y: auto;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.7);
+  /* margin: 0 auto; */
+  /* width: 50%; */
 }
 
 .recipe-edit__modal {
