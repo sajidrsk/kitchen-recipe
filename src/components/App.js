@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RecipeList from "./RecipeList";
 import "../css/app.css";
 import RecipeEdit from "./RecipeEdit";
+import { v4 as uuidv4 } from "uuid";
 
 export const RecipeContext = React.createContext();
 const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
@@ -28,14 +29,14 @@ function App() {
 
   const handleRecipeAdd = () => {
     const newRecipe = {
-      id: Date.now().toString(),
+      id: uuidv4(),
       name: "",
       servings: 0,
       cookTime: "",
       instructions: "",
       ingredients: [
         {
-          id: Date.now().toString(),
+          id: uuidv4(),
           name: "",
           amount: "",
         },
@@ -77,7 +78,7 @@ function App() {
 
 const sampleRecipes = [
   {
-    id: 1,
+    id: uuidv4(),
     name: "Plain Chicken",
     servings: 3,
     cookTime: "0:45",
@@ -85,19 +86,19 @@ const sampleRecipes = [
       "1. Put the salt on chicken \n2. Put Ckicken in oven \n3. Eat the Chicken",
     ingredients: [
       {
-        id: 1,
+        id: uuidv4(),
         name: "Chicken",
         amount: "2 Pounds",
       },
       {
-        id: 2,
+        id: uuidv4(),
         name: "Salt",
         amount: "1Tbs",
       },
     ],
   },
   {
-    id: 2,
+    id: uuidv4(),
     name: "Mutton Dish",
     servings: 5,
     cookTime: "1:45",
@@ -105,12 +106,12 @@ const sampleRecipes = [
       "1. Put the poparika on Mutton \n2. Put Mutton in oven \n3. Eat the Mutton",
     ingredients: [
       {
-        id: 1,
+        id: uuidv4(),
         name: "Mutton",
         amount: "2 Pounds",
       },
       {
-        id: 2,
+        id: uuidv4(),
         name: "Paparika",
         amount: "1Tbs",
       },
