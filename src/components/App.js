@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RecipeList from "./RecipeList";
-import "../css/app.css";
+import "../css/app.scss";
 import RecipeEdit from "./RecipeEdit";
 import { v4 as uuidv4 } from "uuid";
 
