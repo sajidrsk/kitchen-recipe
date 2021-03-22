@@ -3,7 +3,7 @@ import { Button, TextField } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
 import RecipeIngredientEdit from "./RecipeIngredientEdit";
-import { RecipeContext } from "./App";
+import { RecipeContext } from "../contexts/recipe-context";
 
 const RecipeEdit = ({ recipe }) => {
   const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext);

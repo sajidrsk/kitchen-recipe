@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import IngredientList from "./IngredientList";
-import { RecipeContext } from "./App";
+import { RecipeContext } from "../contexts/recipe-context";
 
 const useStyles = makeStyles({
   buttonMargin: {

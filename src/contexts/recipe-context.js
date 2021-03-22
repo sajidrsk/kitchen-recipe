@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import RecipeList from "./RecipeList";
-import "../css/app.scss";
-import RecipeEdit from "./RecipeEdit";
 import { v4 as uuidv4 } from "uuid";
 
 export const RecipeContext = React.createContext();
+
 const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
 
-function App() {
+export const RecipeContextProvider = ({ children }) => {
   const [selectedRecipeId, setSelectedRecipeId] = useState();
   const [recipes, setRecipes] = useState(sampleRecipes);
   const selectedRecipe = recipes.find(
@@ -66,15 +64,16 @@ function App() {
     handleRecipeDelete,
     handleRecipeSelect,
     handleRecipeChange,
+    selectedRecipe,
+    recipes,
   };
 
   return (
     <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes} />
-      {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
+      {children}
     </RecipeContext.Provider>
   );
-}
+};
 
 const sampleRecipes = [
   {
@@ -118,5 +117,3 @@ const sampleRecipes = [
     ],
   },
 ];
-
-export default App;

@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Button } from "@material-ui/core";
 
 import Recipe from "./Recipe";
-import { RecipeContext } from "./App";
+import { RecipeContext } from "../contexts/recipe-context";
 
 export default function RecipeList({ recipes }) {
   const { handleRecipeAdd } = useContext(RecipeContext);
+
   return (
     <div className="recipe-list">
       <div className="recipe-list__grid">
