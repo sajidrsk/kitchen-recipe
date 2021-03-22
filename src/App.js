@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { SnackbarProvider } from "notistack";
 
 import "./css/app.scss";
 import { AuthContextProvider } from "./contexts/auth-context";
@@ -10,17 +11,19 @@ import Signup from "./containers/Signup";
 
 function App() {
   return (
-    <AuthContextProvider>
-      <RecipeContextProvider>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-          </Switch>
-        </Router>
-      </RecipeContextProvider>
-    </AuthContextProvider>
+    <SnackbarProvider maxSnack={3} autoHideDuration={2000} preventDuplicate>
+      <AuthContextProvider>
+        <RecipeContextProvider>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
+          </Router>
+        </RecipeContextProvider>
+      </AuthContextProvider>
+    </SnackbarProvider>
   );
 }
 

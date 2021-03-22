@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Box,
   Typography,
   Container,
+  Grow,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
+import { useSnackbar } from "notistack";
 
 import { useAuth } from "../../contexts/auth-context";
 
@@ -47,29 +47,41 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
 
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      setError("");
-      setLoading(true);
-      // await login(emailRef.current.value, passwordRef.current.value);
+      // setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
       // history.push("/");
-      console.log(emailRef.current.value, passwordRef.current.value);
-      throw new Error();
+      enqueueSnackbar("Login Successful", {
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        TransitionComponent: Grow,
+        variant: "success",
+      });
     } catch (e) {
-      setError("Failed to log in");
+      enqueueSnackbar("Failed to Log In!", {
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        TransitionComponent: Grow,
+        variant: "error",
+      });
     }
 
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
@@ -82,7 +94,6 @@ const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        {error && error}
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
@@ -93,7 +104,6 @@ const Login = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
             inputRef={emailRef}
           />
           <TextField
@@ -108,10 +118,6 @@ const Login = () => {
             autoComplete="current-password"
             inputRef={passwordRef}
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
           <Button
             type="submit"
             fullWidth
@@ -121,12 +127,14 @@ const Login = () => {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
+          <Grid container justify="flex-end">
+            {/* <Grid item xs>
               <Link to="#">Forgot password?</Link>
-            </Grid>
+            </Grid> */}
             <Grid item>
-              <Link to="/signup">{"Don't have an account? Sign Up"}</Link>
+              <Button color="primary" to="/signup" component={Link}>
+                {"Don't have an account? Sign Up"}
+              </Button>
             </Grid>
           </Grid>
         </form>
