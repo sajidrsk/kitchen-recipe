@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import "../css/app.scss";
-import { AuthContextProvider } from "../contexts/auth-context";
-import { RecipeContextProvider } from "../contexts/recipe-context";
-import Home from "../containers/Home";
-import Login from "../containers/Login";
-import Signup from "../containers/Signup";
+import "./css/app.scss";
+import { AuthContextProvider } from "./contexts/auth-context";
+import { RecipeContextProvider } from "./contexts/recipe-context";
+import Home from "./containers/Home";
+import Login from "./containers/Login";
+import Signup from "./containers/Signup";
 
 function App() {
   return (
