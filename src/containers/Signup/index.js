@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Box,
   Typography,
   Container,
+  Grow,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
+import { useSnackbar } from "notistack";
 
 import { useAuth } from "../../contexts/auth-context";
 function Copyright() {
@@ -46,33 +46,53 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = () => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
 
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
+      return enqueueSnackbar("Passwords do not match", {
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        TransitionComponent: Grow,
+        variant: "error",
+      });
     }
 
     try {
-      setError("");
-      setLoading(true);
-      console.log(emailRef.current.value, passwordRef.current.value);
-      // await signup(emailRef.current.value, passwordRef.current.value);
+      // setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
       // history.push("/");
+      enqueueSnackbar("SignUp Successful", {
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        TransitionComponent: Grow,
+        variant: "success",
+      });
     } catch {
-      setError("Failed to create an account");
+      enqueueSnackbar("Failed to create an account", {
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+        TransitionComponent: Grow,
+        variant: "error",
+      });
     }
 
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
@@ -85,7 +105,6 @@ const SignUp = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        {error && error}
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {/* <Grid item xs={12} sm={6}>
@@ -148,12 +167,6 @@ const SignUp = () => {
                 inputRef={passwordConfirmRef}
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
           </Grid>
           <Button
             type="submit"
@@ -166,7 +179,9 @@ const SignUp = () => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/login">Already have an account? Sign in</Link>
+              <Button color="primary" to="/login" component={Link}>
+                {"Already have an account? Sign in"}
+              </Button>
             </Grid>
           </Grid>
         </form>
