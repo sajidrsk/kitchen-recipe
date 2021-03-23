@@ -8,19 +8,20 @@ import { RecipeContextProvider } from "./contexts/recipe-context";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+import ForgotPassword from "./containers/ForgotPassword";
 import PrivateRoute from "./PrivateRoutes";
 
 function App() {
-  const response =false;
   return (
-    <SnackbarProvider maxSnack={3} autoHideDuration={2000} preventDuplicate>
+    <SnackbarProvider maxSnack={3} autoHideDuration={3000} preventDuplicate>
       <AuthContextProvider>
         <RecipeContextProvider>
           <Router>
             <Switch>
-              <PrivateRoute auth={response} exact path="/" component={Home} />
+              <PrivateRoute exact path="/" component={Home} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/forgot-password" component={ForgotPassword} />
             </Switch>
           </Router>
         </RecipeContextProvider>
