@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -45,24 +45,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const ForgotPassword = () => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
-      enqueueSnackbar("Login Successful", {
+      await resetPassword(emailRef.current.value);
+
+      enqueueSnackbar("Password Reset Email Sent to Your Mail", {
         anchorOrigin: {
           vertical: "bottom",
           horizontal: "center",
@@ -93,7 +91,7 @@ const Login = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Password Reset
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
@@ -107,18 +105,6 @@ const Login = () => {
             autoComplete="email"
             inputRef={emailRef}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            inputRef={passwordRef}
-          />
           <Button
             type="submit"
             fullWidth
@@ -127,18 +113,17 @@ const Login = () => {
             className={classes.submit}
             disabled={loading}
           >
-            Sign In
+            Reset Password
           </Button>
           <Grid container justify="flex-end">
             <Grid item xs>
-              <Button color="primary" to="/forgot-password" component={Link}>
-                {"Forgot password?"}
+              <Button color="primary" to="/login" component={Link}>
+                {"Log In!"}
               </Button>
-              {/* <Link to="#">Forgot password?</Link> */}
             </Grid>
-            <Grid item xs>
+            <Grid item>
               <Button color="primary" to="/signup" component={Link}>
-                {"Don't have an account? Sign Up"}
+                {"Don't have an account? SignUp"}
               </Button>
             </Grid>
           </Grid>
@@ -151,4 +136,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

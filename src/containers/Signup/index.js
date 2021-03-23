@@ -52,8 +52,8 @@ const SignUp = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
-  // const [loading, setLoading] = useState(false);
-  // const history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,9 +70,9 @@ const SignUp = () => {
     }
 
     try {
-      // setLoading(true);
+      setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      // history.push("/");
+      history.push("/");
       enqueueSnackbar("SignUp Successful", {
         anchorOrigin: {
           vertical: "bottom",
@@ -92,7 +92,7 @@ const SignUp = () => {
       });
     }
 
-    // setLoading(false);
+    setLoading(false);
   };
 
   return (
@@ -169,6 +169,7 @@ const SignUp = () => {
             </Grid>
           </Grid>
           <Button
+            disabled={loading}
             type="submit"
             fullWidth
             variant="contained"
