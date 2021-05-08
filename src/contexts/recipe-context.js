@@ -61,7 +61,7 @@ export const RecipeContextProvider = ({ children }) => {
       setSelectedRecipeId(undefined);
     }
     setRecipes(recipes.filter((recipe) => recipe.id !== id));
-    db.ref(`${currentUser?.uid}recipes/${id}`).remove();
+    db.ref(`${currentUser?.uid}/recipes/${id}`).remove();
   };
 
   const recipeContextValue = {
